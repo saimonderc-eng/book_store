@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: book_store
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=book_market
+    username: postgres
+    password: postgres
+  liquibase:
+    change-log: classpath:db/changelog/changelog.xml
+
+jwt:
+  secret: ${JWT_SECRET:Te77a0f59724b896f3ae3152base898147c5221dd8d1729313f0ada1d4291e1eb}
+  access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION:1800000}
+  refresh-token-expiration: ${JWT_REFRESH_TOKEN_EXPIRATION:3000000000}
