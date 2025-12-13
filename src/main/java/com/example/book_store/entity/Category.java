@@ -4,25 +4,23 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
-
-@Data
+@Entity
+@Table(name = "CATEGORIES")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "AUTHORS")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
-public class Author {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
     Long id;
 
-    @Column(name = "FULL_NAME", nullable = false)
-    String authorFullName;
+    @Column(name = "NAME", nullable = false, length = 25, unique = true)
+    String name;
 
-    @Column(name = "BIRTHDATE", nullable = false)
-    LocalDate birthdate;
+    @Column(name = "DESCRIPTION", nullable = false)
+    String description;
 }

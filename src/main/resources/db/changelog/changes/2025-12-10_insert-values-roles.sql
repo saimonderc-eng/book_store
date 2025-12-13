@@ -12,4 +12,9 @@ ON CONFLICT (id) DO NOTHING;
 ALTER TABLE users
     ALTER COLUMN password_hash TYPE VARCHAR(255);
 
-DELETE FROM roles WHERE role = 'MANAGER'
+--changeset magamed:3
+DELETE FROM roles WHERE role = 'MANAGER';
+
+--changeset magamed:4
+INSERT INTO roles VALUES
+                      (4, 'MANAGER')

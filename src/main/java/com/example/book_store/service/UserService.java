@@ -133,6 +133,7 @@ public class UserService {
                 .orElseThrow(() -> new NotFoundException("user not found!"));
 
         banStatusCheck(user1);
+
         return user1;
     }
 
