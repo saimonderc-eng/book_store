@@ -52,8 +52,9 @@ public class BookController {
        return bookService.findBooksByCategories(categoryIds);
     }
     //поиск книг по критериям
-    @GetMapping("/dynamic-search")
-    public BookResponseDto dynamicSearch(@RequestBody BookResponseDto dto) throws Exception{
-
+    @PostMapping("/dynamic-search")
+    public ResponseEntity<List<BookResponseDto>> dynamicSearch(@RequestBody BookResponseDto book){
+        List<BookResponseDto> books = bookService.dynamicSearch(book);
+        return ResponseEntity.ok(books);
     }
 }

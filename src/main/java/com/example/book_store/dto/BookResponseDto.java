@@ -17,5 +17,5 @@ public class BookResponseDto {
     String description;
     String author;
     Integer stockQuantity;
-    List<Long> categories;
+    List<CategoryDto> categories;
 }

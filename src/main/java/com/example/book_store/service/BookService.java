@@ -11,7 +11,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -63,5 +62,11 @@ public class BookService {
         if (value != null) {
             consumer.accept(value);
         }
+    }
+
+    public List<BookResponseDto> dynamicSearch(BookResponseDto book) {
+        return bookRepository.dynamicSearch(book).stream()
+                .map(bookMapper::toDto)
+                .collect(Collectors.toList());
     }
 }

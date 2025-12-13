@@ -3,19 +3,13 @@ package com.example.book_store.dto;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UpdateBookDto {
+public class CategoryDto {
 
+    Long id;
     String name;
-    Double price;
-    String description;
-    String author;
-    Integer stockQuantity;
-    List<CategoryDto> categories;
 }
