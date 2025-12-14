@@ -41,4 +41,15 @@ public class GlobalExceptionHandler {
                         .message(ex.getMessage())
                         .build());
     }
+    @ExceptionHandler(NotExistOnStockException.class)
+    public ResponseEntity<HttpApiError> handleNotExistOnStockException(NotExistOnStockException ex){
+        log.info(ex.getMessage());
+        return ResponseEntity
+                .badRequest()
+                .body(HttpApiError.builder()
+                        .code(400)
+                        .message(ex.getMessage())
+                        .build()
+                );
+    }
 }

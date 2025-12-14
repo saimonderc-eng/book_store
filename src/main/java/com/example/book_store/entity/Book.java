@@ -36,18 +36,15 @@ public class Book {
     String author;
 
     @Column(name = "STOCK_QUANTITY", nullable = false)
-    Integer stockQuantity = 0;
+    int stockQuantity = 0;
 
     @Column(name = "DELETED", nullable = false)
     Boolean deleted = false;
 
     public Boolean isAvailable(){
-        return stockQuantity != null && stockQuantity > 0;
+        return stockQuantity > 0;
     }
     public String getStockLevel(){
-        if(stockQuantity == null){
-            return "статус не известен";
-        }
         if(stockQuantity <= 0){
             return "нет в наличие";
         }else if(stockQuantity <= 5){

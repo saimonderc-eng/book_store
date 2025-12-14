@@ -1,0 +1,12 @@
+-- liquibase formatted sql
+
+--changeset magamed:1
+CREATE TABLE cart_items
+(
+    ID BIGSERIAL PRIMARY KEY,
+    QUANTITY BIGINT NOT NULL,
+    USER_ID BIGINT NOT NULL,
+    BOOK_ID BIGINT NOT NULL,
+    FOREIGN KEY (USER_ID) REFERENCES users(ID),
+    FOREIGN KEY (BOOK_ID) REFERENCES books(ID)
+);
