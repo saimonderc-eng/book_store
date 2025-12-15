@@ -3,7 +3,6 @@ package com.example.book_store.mapper;
 import com.example.book_store.dto.BookCreateDto;
 import com.example.book_store.dto.BookResponseDto;
 import com.example.book_store.entity.Book;
-import com.example.book_store.entity.CartItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
 
     private final OrderService orderService;
-    //создание заказа...
-    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
+
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER')")
     @PostMapping
     public Order create(@RequestBody Order order){
         return orderService.create(order);

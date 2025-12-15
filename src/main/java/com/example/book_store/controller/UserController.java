@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @GetMapping("/find-by-username")
-    public ResponseEntity<?> findUserByUsername(@RequestParam String username){
+    public ResponseEntity<?> findUserByUsername(@RequestParam String username) {
         return ResponseEntity.ok(userService.findUserByUsername(username));
     }
 

@@ -20,40 +20,38 @@ public class BookController {
 
     private final BookService bookService;
 
-    //получение списка всех книг
     @GetMapping
-    public List<BookResponseDto> getBooks(){
+    public List<BookResponseDto> getBooks() {
         return bookService.getBooks();
     }
 
-    //добавление книги
-    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER')")
     @PostMapping("/addBook")
     public BookResponseDto createBook(@Valid @RequestBody BookCreateDto book) {
-         return bookService.createBook(book);
+        return bookService.createBook(book);
     }
-    //удаление книги
-    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
+
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MANAGER')")
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBook(@PathVariable Long id){
+    public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
         bookService.deleteBook(id);
         return ResponseEntity.noContent().build();
     }
-    //изменение данных книги
-    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
+
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MANAGER')")
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateBook(@PathVariable Long id, @RequestBody UpdateBookDto dto){
+    public ResponseEntity<?> updateBook(@PathVariable Long id, @RequestBody UpdateBookDto dto) {
         BookResponseDto dto1 = bookService.updateBook(id, dto);
         return ResponseEntity.ok(dto1);
     }
-    // поиск книги по категориям
+
     @GetMapping("/find-by-categories")
-    public List<BookResponseDto> findByCategories(@RequestParam List<Long> categoryIds){
-       return bookService.findBooksByCategories(categoryIds);
+    public List<BookResponseDto> findByCategories(@RequestParam List<Long> categoryIds) {
+        return bookService.findBooksByCategories(categoryIds);
     }
-    //поиск книг по критериям
+
     @PostMapping("/dynamic-search")
-    public ResponseEntity<List<BookResponseDto>> dynamicSearch(@RequestBody BookResponseDto book){
+    public ResponseEntity<List<BookResponseDto>> dynamicSearch(@RequestBody BookResponseDto book) {
         List<BookResponseDto> books = bookService.dynamicSearch(book);
         return ResponseEntity.ok(books);
     }

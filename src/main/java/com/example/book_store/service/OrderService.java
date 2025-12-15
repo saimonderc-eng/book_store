@@ -28,7 +28,7 @@ public class OrderService {
         order.setTotalPrice(totalPrice);
         orderRepository.save(order);
         boolean existsOnStock = true;
-        if (existsOnStock){
+        if (!existsOnStock){
             throw  new NotExistOnStockException("book not in stock");
         }
         return order;

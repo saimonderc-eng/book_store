@@ -19,18 +19,10 @@ public class GlobalExceptionHandler {
                 .body(HttpApiError.builder()
                         .code(400)
                         .message(ex.getMessage())
-                        .build());
+                        .build()
+                );
     }
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<HttpApiError> handleException(Exception ex){
-        log.error(ex.getMessage());
-        return ResponseEntity
-                .badRequest()
-                .body(HttpApiError.builder()
-                        .code(500)
-                        .message(ex.getMessage())
-                        .build());
-    }
+
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<HttpApiError> handleUserNotFound(NotFoundException ex){
         log.info(ex.getMessage());
@@ -39,7 +31,8 @@ public class GlobalExceptionHandler {
                 .body(HttpApiError.builder()
                         .code(404)
                         .message(ex.getMessage())
-                        .build());
+                        .build()
+                );
     }
     @ExceptionHandler(NotExistOnStockException.class)
     public ResponseEntity<HttpApiError> handleNotExistOnStockException(NotExistOnStockException ex){
@@ -48,6 +41,39 @@ public class GlobalExceptionHandler {
                 .badRequest()
                 .body(HttpApiError.builder()
                         .code(400)
+                        .message(ex.getMessage())
+                        .build()
+                );
+    }
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<HttpApiError> handleGeneralException(Exception ex) {
+        log.info(ex.getMessage());
+        return ResponseEntity
+                .internalServerError()
+                .body(HttpApiError.builder()
+                        .code(500)
+                        .message(ex.getMessage() != null ? ex.getMessage() : "Internal Server Error")
+                        .build()
+                );
+    }
+    @ExceptionHandler(UsernameAlreadyTakenException.class)
+    public ResponseEntity<HttpApiError> handleUsernameAlreadyTakenException(Exception ex){
+        log.info(ex.getMessage());
+        return ResponseEntity
+                .badRequest()
+                .body(HttpApiError.builder()
+                        .code(400)
+                        .message(ex.getMessage())
+                        .build()
+                );
+    }
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<HttpApiError> handleRuntimeException(Exception ex){
+        log.info(ex.getMessage());
+        return ResponseEntity
+                .internalServerError()
+                .body(HttpApiError.builder()
+                        .code(500)
                         .message(ex.getMessage())
                         .build()
                 );

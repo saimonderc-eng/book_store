@@ -25,19 +25,19 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody AuthRequest request) throws BadRequestException{
+    public ResponseEntity<?> login(@RequestBody AuthRequest request) throws BadRequestException {
         AuthResponse authResponse = userService.login(request);
         return new ResponseEntity<>(authResponse, HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/change-password")
-    public ResponseEntity<?> changePassword(@RequestBody ChangePasswordDto dto) throws BadRequestException{
+    public ResponseEntity<?> changePassword(@RequestBody ChangePasswordDto dto) throws BadRequestException {
         userService.changePassword(dto);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
     @PostMapping("refresh-token")
-    public ResponseEntity<?> refreshToken(@RequestBody RefreshTokenDto dto) throws BadRequestException{
+    public ResponseEntity<?> refreshToken(@RequestBody RefreshTokenDto dto) throws BadRequestException {
         AuthResponse response = userService.refreshToken(dto);
         return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
     }

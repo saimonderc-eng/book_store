@@ -1,6 +1,5 @@
 package com.example.book_store.dto;
 
-import com.example.book_store.entity.Book;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
