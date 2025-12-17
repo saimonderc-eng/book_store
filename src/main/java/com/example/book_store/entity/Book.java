@@ -44,15 +44,6 @@ public class Book {
     public Boolean isAvailable(){
         return stockQuantity > 0;
     }
-    public String getStockLevel(){
-        if(stockQuantity <= 0){
-            return "нет в наличие";
-        }else if(stockQuantity <= 5){
-            return "осталось мало!";
-        }else {
-            return "есть в наличие";
-        }
-    }
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

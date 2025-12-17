@@ -17,7 +17,7 @@ public class BookCreateDto {
     String name;
 
     @NotNull(message = "Price is required")
-    @Positive(message = "Price must be greater that 0")
+    @Positive(message = "Price must be greater than 0")
     Double price;
 
     @NotBlank(message = "Description is required")

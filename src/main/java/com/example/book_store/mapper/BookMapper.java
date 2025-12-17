@@ -19,7 +19,4 @@ public interface BookMapper {
     @Mapping(source = "category.id", target = "categoryId")
     Book toEntity(BookCreateDto dto);
 
-    default String mapStockLevel(Book book){
-        return book.getStockLevel();
-    }
 }
