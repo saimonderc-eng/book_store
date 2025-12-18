@@ -6,7 +6,7 @@ import com.example.book_store.dto.UpdateBookDto;
 import com.example.book_store.entity.Book;
 import com.example.book_store.exception.NotFoundException;
 import com.example.book_store.mapper.BookMapper;
-import com.example.book_store.repository.BookRepository;
+import com.example.book_store.repository.customRepository.BookRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

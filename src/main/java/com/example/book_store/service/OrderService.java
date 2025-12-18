@@ -3,7 +3,7 @@ package com.example.book_store.service;
 import com.example.book_store.entity.Book;
 import com.example.book_store.entity.Order;
 import com.example.book_store.exception.NotExistOnStockException;
-import com.example.book_store.repository.BookRepository;
+import com.example.book_store.repository.customRepository.BookRepository;
 import com.example.book_store.repository.OrderRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

@@ -40,6 +40,7 @@ public class UserService {
 
     public AuthResponse register(UserCreateDto dto) throws BadRequestException {
         log.info("CREATION start");
+
         User user1 = userRepository.findByUsername(dto.getUsername())
                 .orElse(null);
         if (user1 != null) {
@@ -51,9 +52,10 @@ public class UserService {
         Role role = roleService.getUserRole();
         user.setRoles(List.of(role));
 
-        log.info("ACCOUNT created");
-        userRepository.save(user);
 
+        log.info("ACCOUNT created, saving user...");
+
+        userRepository.save(user);
         return generateTokens(user);
     }
 
@@ -148,7 +150,7 @@ public class UserService {
     }
 
     public void banStatusCheck(User user) throws BadRequestException {
-        if (user.getIsBanned()) {
+        if (Boolean.TRUE.equals(user.getIsBanned())) {
             throw new BadRequestException("your account is banned!");
         }
     }
