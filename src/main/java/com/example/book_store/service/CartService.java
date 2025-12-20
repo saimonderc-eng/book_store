@@ -7,7 +7,7 @@ import com.example.book_store.entity.User;
 import com.example.book_store.exception.NotExistOnStockException;
 import com.example.book_store.exception.NotFoundException;
 import com.example.book_store.mapper.CartItemMapper;
-import com.example.book_store.repository.customRepository.BookRepository;
+import com.example.book_store.repository.BookRepository;
 import com.example.book_store.repository.CartRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

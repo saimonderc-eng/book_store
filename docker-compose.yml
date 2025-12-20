@@ -1,6 +1,6 @@
 services:
   backend:
-    image: 'app'
+    image: 'book_store'
     container_name: java_backend
     depends_on:
       - database
@@ -9,7 +9,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
   database:
-    image: 'postgres:18'
+    image: 'postgres:15'
     container_name: 'postgres'
     environment:
       - POSTGRES_DB=postgres
@@ -17,3 +17,8 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - '6767:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

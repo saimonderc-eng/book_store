@@ -7,6 +7,9 @@ spring:
     password: postgres
   liquibase:
     change-log: classpath:db/changelog/changelog.xml
+  docker:
+    compose:
+      enabled: false
 
 jwt:
   secret: ${JWT_SECRET:Te77a0f59724b896f3ae3152base898147c5221dd8d1729313f0ada1d4291e1eb}

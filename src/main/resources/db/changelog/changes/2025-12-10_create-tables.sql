@@ -29,13 +29,6 @@ CREATE TABLE IF NOT EXISTS users_roles
     FOREIGN KEY (ROLE_ID) REFERENCES roles (ID) ON DELETE CASCADE
 );
 
--- changeset magamed:4
-CREATE TABLE IF NOT EXISTS authors
-(
-    ID        BIGSERIAL PRIMARY KEY,
-    FULL_NAME VARCHAR NOT NULL,
-    BIRTHDATE DATE    NOT NULL
-);
 -- changeset magamed:5
 CREATE TABLE IF NOT EXISTS books
 (
@@ -43,8 +36,7 @@ CREATE TABLE IF NOT EXISTS books
     NAME        VARCHAR(50)  NOT NULL,
     PRICE       BIGINT       NOT NULL,
     DESCRIPTION VARCHAR(500) NOT NULL,
-    AUTHOR_ID   BIGINT       NOT NULL,
-    FOREIGN KEY (AUTHOR_ID) REFERENCES authors (ID)
+    AUTHOR_ID   BIGINT       NOT NULL
 );
 --changeset magamed:6
 CREATE TABLE IF NOT EXISTS categories
@@ -61,9 +53,6 @@ CREATE TABLE IF NOT EXISTS books_categories
     FOREIGN KEY (BOOK_ID) REFERENCES books (ID) ON DELETE CASCADE,
     FOREIGN KEY (CATEGORY_ID) REFERENCES categories (ID) ON DELETE CASCADE
 );
---changeset magamed:8
-DROP TABLE authors CASCADE;
-
 --changeset magamed:9
 ALTER TABLE books ADD column
 AUTHOR VARCHAR;

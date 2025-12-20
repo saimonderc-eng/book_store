@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class BookRepositoryImpl implements CustomBookRepository {
+public class BookCustomRepositoryImpl implements BookCustomRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

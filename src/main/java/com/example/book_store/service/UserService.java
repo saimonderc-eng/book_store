@@ -54,8 +54,9 @@ public class UserService {
 
 
         log.info("ACCOUNT created, saving user...");
-
         userRepository.save(user);
+        log.info("After save");
+
         return generateTokens(user);
     }
 
